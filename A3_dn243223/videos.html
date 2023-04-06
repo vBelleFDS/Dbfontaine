@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Videos</title>
+    <link rel="icon" type="image/x-con" href="./favicon.ico">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+
+<body>
+    <h1>Videos</h1>
+    
+    <script> 
+        alert("Check back soon for new content, more beats on the way.");
+    </script>
+
+    <div id="color-buttons">
+        <button id="palette1" class="purple-button" data-background-color="#f1c40f" data-font-color="#333"></button>
+        <button id="palette2" class="blue-button" data-background-color="#2ecc71" data-font-color="#fff"></button>
+        <button id="palette3" class="lightblue-button" data-background-color="#e74c3c" data-font-color="#fff"></button>
+        <button id="clear" data-background-color="#fff" data-font-color="#333">Clear</button>
+    </div>
+
+    <script>
+        const palette1 = document.getElementById("palette1");
+        const palette2 = document.getElementById("palette2");
+        const palette3 = document.getElementById("palette3");
+        const clearButton = document.getElementById("clear");
+
+        const defaultBgColor = document.body.style.backgroundColor;
+        const defaultFontColor = document.body.style.color;
+
+        const changeColors = (bgColor, fontColor) => {
+            document.body.style.backgroundColor = bgColor;
+            document.body.style.color = fontColor;
+        };
+
+        //purple
+        palette1.addEventListener("click", () => {
+            changeColors("#613659", "#211522");
+        });
+
+        //true blue
+        palette2.addEventListener("click", () => {
+            changeColors("#43B0F1", "#0570CD");
+        });
+
+        //light blue
+        palette3.addEventListener("click", () => {
+            changeColors("#a7c5eb", "#13293d");
+        });
+
+        //clear
+        clearButton.addEventListener("click", () => {
+            changeColors(defaultBgColor, defaultFontColor);
+        });
+    </script>
+
+
+    <br />
+    <div class="videos-container">
+        <iframe width="545" height="300" src="https://www.youtube.com/embed/LyG-Q369FG8" title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen></iframe>
+
+        <iframe width="545" height="300" src="https://www.youtube.com/embed/W_wcWyoCL8I" title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen></iframe>
+
+        <video controls="controls" width="545" height="300">
+            <source src="assets/alyx beat.mp4" type="video/mp4">
+        </video>
+    </div>
+</body>
+
+</html>

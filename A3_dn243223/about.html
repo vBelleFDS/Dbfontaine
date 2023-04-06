@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>About Me</title>
+    <script>
+        const downloadButton = document.getElementById("download-button");
+        const audio = document.getElementById("melody");
+
+        downloadButton.addEventListener("click", () => {
+            const url = audio.src;
+            const filename = url.substring(url.lastIndexOf("/") + 1);
+            fetch(url)
+                .then(response => response.blob())
+                .then(blob => {
+                    const url = window.URL.createObjectURL(blob);
+                    const a = document.createElement("a");
+                    a.href = url;
+                    a.download = filename;
+                    document.body.appendChild(a);
+                    a.click();
+                    a.remove();
+                    alert("Don't forget, send back anything you make with this loop to my email!");
+                });
+        });
+    </script>
+    <link rel="icon" type="image/x-con" href="./favicon.ico">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <style>
+        /* tablet */
+        @media (min-width: 481px) and (max-width: 1024px) {
+        #my-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: repeat(3, auto);
+            grid-gap: 2rem;
+            justify-items: center;
+            align-items: center;
+            margin: 2rem;
+        }
+        #me {
+            width: 100%;
+        }
+        form {
+            width: 100%;
+        }
+        }
+
+        /* mobile */
+        @media (max-width: 480px) {
+        #my-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: repeat(4, auto);
+            grid-gap: 1rem;
+            justify-items: center;
+            align-items: center;
+            margin: 2rem;
+        }
+        #me {
+            width: 100%;
+        }
+        form {
+            width: 100%;
+        }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <h1>About Me</h1>
+
+    <div id="color-buttons">
+        <button id="palette1" class="purple-button" data-background-color="#f1c40f" data-font-color="#333"></button>
+        <button id="palette2" class="blue-button" data-background-color="#2ecc71" data-font-color="#fff"></button>
+        <button id="palette3" class="lightblue-button" data-background-color="#e74c3c" data-font-color="#fff"></button>
+        <button id="clear" data-background-color="#fff" data-font-color="#333">Clear</button>
+    </div>
+
+    <script>
+        const palette1 = document.getElementById("palette1");
+        const palette2 = document.getElementById("palette2");
+        const palette3 = document.getElementById("palette3");
+        const clearButton = document.getElementById("clear");
+
+        const defaultBgColor = document.body.style.backgroundColor;
+        const defaultFontColor = document.body.style.color;
+
+        const changeColors = (bgColor, fontColor) => {
+            document.body.style.backgroundColor = bgColor;
+            document.body.style.color = fontColor;
+        };
+
+        //purple
+        palette1.addEventListener("click", () => {
+            changeColors("#613659", "#211522");
+        });
+
+        //true blue
+        palette2.addEventListener("click", () => {
+            changeColors("#43B0F1", "#0570CD");
+        });
+
+        //light blue
+        palette3.addEventListener("click", () => {
+            changeColors("#a7c5eb", "#13293d");
+        });
+
+        //clear
+        clearButton.addEventListener("click", () => {
+            changeColors(defaultBgColor, defaultFontColor);
+        });
+    </script>
+
+    <ul>
+        <li>Production Credits: Bear1Boss, iayze, Zelly Ocho, Surf, OVT, Blankfac3, + more</li>
+        <li>Collective Affiliation (Instagram handles): @onlyheavyweight (co-founder), @sweetsixrecs (producer)</li>
+        <li>I'm a multi-instrumentalist music producer from Halifax, Nova Scotia. I specialize in rap music, but I'm
+            open to taking on any kind of project.
+            <ul>
+                <li>I'm also classically trained and have some experience writing for strings. I have some experience
+                    recording vocals and guitars, but it's something
+                    I'd like to do more of and learn about.</li>
+            </ul>
+        </li>
+        <li>All beats on my Instagram are for sale unless purchased exclusively so feel free to inquire.
+            <ol>
+                <li>Otherwise, please see my BeatStars store which is linked on the home page, or email me directly and
+                    I'll send a pack.</li>
+                <li>Custom beats are also available, please inquire via email and provide me with details of what you're
+                    looking for and we can go from there.</li>
+            </ol>
+        </li>
+        <li>Thanks for checking out my website, I've attached a loop produced by me and tgwog. If you'd like to use it
+            send me an email through the home page or contact
+            form below and I'll attach the mp3 in my reply.</li>
+    </ul>
+
+    <audio id="melody" src="./assets/mel 143 dbfontaine tgwog.mp3" type="audio/mp3" controls></audio>
+    <button id="download-button"><a href="./assets/mel 143 dbfontaine tgwog.mp3" target="_blank"
+            download>Download</a></button>
+
+    <div id="my-grid">
+        <img id="me" src="assets/me.jpg" Alt="A photo of me in a studio" width="977" height="648">
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Dbfontaine - Music Producer</title>
+  <link rel="icon" type="image/x-con" href="./favicon.ico">
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+  <link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
+    <style>    
+    /* mobile */
+      @media (max-width: 480px) {
+        body {
+          grid-template-columns: 1fr;
+          grid-template-rows: auto 1fr;
+          grid-gap: 10px;
+          font-size: 14px;
+        }
+      }
+  
+      /* tablet */
+      @media (min-width: 481px) and (max-width: 1024px) {
+        body {
+          grid-template-columns: 1fr;
+          grid-template-rows: auto 1fr;
+          grid-gap: 20px;
+          font-size: 16px;
+        }
+      }
+  
+    </style>
+</head>
+
+<body>
+
+  <div class="splash-container">
+    <div class="splash-overlay"></div>
+    <div class="splash-content">
+    </div>
+  </div>
+  <script>
+    if (localStorage.getItem("visited") === null) {
+      // Show alert notification
+      alert("Please scroll down to view the content.");
+
+      // Set visited flag in local storage, ensuring notification does not reappear if the user goes back to index from another page
+      localStorage.setItem("visited", "true");
+    }
+  </script>
+
+  <div id="color-buttons">
+    <button id="palette1" class="purple-button" data-background-color="#f1c40f" data-font-color="#333"></button>
+    <button id="palette2" class="blue-button" data-background-color="#2ecc71" data-font-color="#fff"></button>
+    <button id="palette3" class="lightblue-button" data-background-color="#e74c3c" data-font-color="#fff"></button>
+    <button id="clear" data-background-color="#fff" data-font-color="#333">Clear</button>
+  </div>
+
+  <script>
+    const palette1 = document.getElementById("palette1");
+    const palette2 = document.getElementById("palette2");
+    const palette3 = document.getElementById("palette3");
+    const clearButton = document.getElementById("clear");
+
+    const defaultBgColor = document.body.style.backgroundColor;
+    const defaultFontColor = document.body.style.color;
+
+    const changeColors = (bgColor, fontColor) => {
+      document.body.style.backgroundColor = bgColor;
+      document.body.style.color = fontColor;
+    };
+
+    //purple
+    palette1.addEventListener("click", () => {
+      changeColors("#613659", "#211522");
+    });
+
+    //true blue
+    palette2.addEventListener("click", () => {
+      changeColors("#43B0F1", "#0570CD");
+    });
+
+    //light blue
+    palette3.addEventListener("click", () => {
+      changeColors("#a7c5eb", "#13293d");
+    });
+
+    //clear
+    clearButton.addEventListener("click", () => {
+      changeColors(defaultBgColor, defaultFontColor);
+    });
+  </script>
+
+
+
+
+  <div class="header">
+    <h3>Dbfontaine</h3>
+    <div class="logo">
+      <a href="https://soundcloud.com/danielbellefontaine">
+        <img src="assets/soundcloud_logo.png" alt="SoundCloud logo" height="164" width="165" />
+      </a>
+    </div>
+  </div>
+
+  <table>
+    <td colspan="3" width="1200">
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="videos.html">Videos</a>
+        <a href="mailto:dspbellefontaine@gmail.com">Contact</a>
+        <a href="https://www.beatstars.com/dbfontaine">Store</a>
+      </nav>
+    </td>
+  </table>
+
+
+  <div class="photo-gallery">
+    <a data-fancybox="gallery" href="assets/gallery/image1.jpg">
+      <img src="assets/gallery/image1.jpg" alt="Stock photo in gallery" class="gallery-image">
+    </a>
+    <a data-fancybox="gallery" href="assets/gallery/image2.jpg">
+      <img src="assets/gallery/image2.jpg" alt="Stock photo in gallery" class="gallery-image">
+    </a>
+    <a data-fancybox="gallery" href="assets/gallery/image3.jpg">
+      <img src="assets/gallery/image3.jpg" alt="Stock photo in gallery" class="gallery-image">
+    </a>
+    <a data-fancybox="gallery" href="assets/gallery/image4.jpg">
+      <img src="assets/gallery/image4.jpg" alt="Stock photo in gallery" class="gallery-image">
+    </a>
+  </div>
+  <script>
+    $(document).ready(function () {
+      $("[data-fancybox]").fancybox({
+        loop: true,
+        buttons: [
+          "zoom",
+          "slideShow",
+          "thumbs",
+          "close"
+        ],
+        animationEffect: "zoom",
+        transitionEffect: "slide",
+      });
+    });
+  </script>
+
+</body>
+
+</html>
